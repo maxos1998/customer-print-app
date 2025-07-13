@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>จัดการข้อมูลลูกค้า | M&M TOYS</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>M&M TOYS SHOP | จัดส่งสินค้า</h1>
+    <form method="POST" action="/add">
+      <input name="name" placeholder="ชื่อ" required>
+      <textarea name="address" placeholder="ที่อยู่" required></textarea>
+      <input name="phone" placeholder="เบอร์โทร" required>
+      <input name="product" placeholder="สินค้า" required>
+      <button type="submit">เพิ่มข้อมูล</button>
+    </form>
+
+    <form method="POST" action="/print-all">
+      <button class="print-all">พิมพ์ทั้งหมดที่ยังไม่พิมพ์</button>
+    </form>
+
+    <div class="list">
+      <% customers.forEach(c => { %>
+        <div class="card <%= c.printed ? 'printed' : '' %>">
+          <h2><%= c.name %></h2>
+          <p><%= c.address %><br>โทร <%= c.phone %><br><strong><%= c.product %></strong></p>
+          <% if (!c.printed) { %>
+            <form method="POST" action="/print/<%= c.id %>">
+              <button>พิมพ์</button>
+            </form>
+          <% } else { %>
+            <span class="printed-label">พิมพ์แล้ว</span>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>
