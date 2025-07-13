@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แก้ไขข้อมูลลูกค้า</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>แก้ไขข้อมูลลูกค้า</h1>
+    <form method="POST" action="/edit/<%= customer.id %>">
+      <textarea name="fulltext" required><%= customer.fulltext %></textarea>
+      <button type="submit">บันทึก</button>
+    </form>
+    <a href="/">← กลับหน้าหลัก</a>
+  </div>
+</body>
+</html>
